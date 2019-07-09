@@ -253,14 +253,14 @@ class CI_Table {
 		// If there is no $args[0], skip this and treat as an associative array
 		// This can happen if there is only a single key, for example this is passed to table->generate
 		// array(array('foo'=>'bar'))
-		if (isset($args[0]) && count($args) === 1 && is_array($args[0]) && ! isset($args[0]['data']))
+		if (isset($args[0]) && count($args) === 1 && is_array($args[0]) && ! isset($args[0]['DataStatus']))
 		{
 			$args = $args[0];
 		}
 
 		foreach ($args as $key => $val)
 		{
-			is_array($val) OR $args[$key] = array('data' => $val);
+			is_array($val) OR $args[$key] = array('DataStatus' => $val);
 		}
 
 		return $args;
@@ -340,13 +340,13 @@ class CI_Table {
 
 				foreach ($heading as $key => $val)
 				{
-					if ($key !== 'data')
+					if ($key !== 'DataStatus')
 					{
 						$temp = str_replace('<th', '<th '.$key.'="'.$val.'"', $temp);
 					}
 				}
 
-				$out .= $temp.(isset($heading['data']) ? $heading['data'] : '').$this->template['heading_cell_end'];
+				$out .= $temp.(isset($heading['DataStatus']) ? $heading['DataStatus'] : '').$this->template['heading_cell_end'];
 			}
 
 			$out .= $this->template['heading_row_end'].$this->newline.$this->template['thead_close'].$this->newline;
@@ -376,13 +376,13 @@ class CI_Table {
 
 					foreach ($cell as $key => $val)
 					{
-						if ($key !== 'data')
+						if ($key !== 'DataStatus')
 						{
 							$temp = str_replace('<td', '<td '.$key.'="'.$val.'"', $temp);
 						}
 					}
 
-					$cell = isset($cell['data']) ? $cell['data'] : '';
+					$cell = isset($cell['DataStatus']) ? $cell['DataStatus'] : '';
 					$out .= $temp;
 
 					if ($cell === '' OR $cell === NULL)

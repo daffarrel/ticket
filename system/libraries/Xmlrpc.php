@@ -293,9 +293,9 @@ class CI_Xmlrpc {
 			'PARAMS'			=> array('METHODCALL', 'METHODRESPONSE'),
 			'MEMBER'			=> array('STRUCT'),
 			'NAME'				=> array('MEMBER'),
-			'DATA'				=> array('ARRAY'),
+			'DataStatus' => array('ARRAY'),
 			'FAULT'			=> array('METHODRESPONSE'),
-			'VALUE'			=> array('MEMBER', 'DATA', 'PARAM', 'FAULT')
+			'VALUE'			=> array('MEMBER', 'DataStatus', 'PARAM', 'FAULT')
 		);
 
 		// XML-RPC Responses
@@ -1351,7 +1351,7 @@ class XML_RPC_Message extends CI_Xmlrpc
 				// Set NULL value to check to see if value passed for this param/member
 				$this->xh[$the_parser]['value'] = NULL;
 				break;
-			case 'DATA':
+			case 'DataStatus':
 			case 'METHODCALL':
 			case 'METHODRESPONSE':
 			case 'PARAMS':
@@ -1480,7 +1480,7 @@ class XML_RPC_Message extends CI_Xmlrpc
 					$this->xh[$the_parser]['valuestack'][0]['values'][$this->xh[$the_parser]['valuestack'][0]['name']] = $this->xh[$the_parser]['value'];
 				}
 				break;
-			case 'DATA':
+			case 'DataStatus':
 				$this->xh[$the_parser]['ac'] = '';
 				break;
 			case 'PARAM':

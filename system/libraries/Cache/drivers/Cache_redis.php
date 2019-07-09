@@ -290,7 +290,7 @@ class CI_Cache_redis extends CI_Driver
 		{
 			return array(
 				'expire' => time() + $this->_redis->ttl($key),
-				'data' => $value
+				'DataStatus' => $value
 			);
 		}
 

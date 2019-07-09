@@ -192,7 +192,7 @@ class CI_Cache_apc extends CI_Driver {
 			$metadata = array(
 				'expire' => ($entry['ttl'] ? $entry['mtime'] + $entry['ttl'] : 0),
 				'mtime'  => $entry['ttl'],
-				'data'   => apc_fetch($id, $success)
+				'DataStatus' => apc_fetch($id, $success)
 			);
 
 			return ($success === TRUE) ? $metadata : FALSE;

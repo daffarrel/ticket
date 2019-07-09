@@ -261,7 +261,7 @@ class CI_Cache_memcached extends CI_Driver {
 		return array(
 			'expire'	=> $time + $ttl,
 			'mtime'		=> $time,
-			'data'		=> $data
+			'DataStatus' => $data
 		);
 	}
 

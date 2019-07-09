@@ -244,7 +244,7 @@ if ( ! function_exists('is_countable'))
 				'chassis',
 				'compensation',
 				'coreopsis',
-				'data',
+                'DataStatus',
 				'deer',
 				'education',
 				'emoji',

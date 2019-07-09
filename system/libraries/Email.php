@@ -1991,7 +1991,7 @@ class CI_Email {
 			}
 		}
 
-		if ( ! $this->_send_command('data'))
+		if ( ! $this->_send_command('DataStatus'))
 		{
 			$this->_smtp_end();
 			return FALSE;
@@ -2129,9 +2129,9 @@ class CI_Email {
 
 						$resp = 250;
 			break;
-			case 'data'	:
+			case 'DataStatus'    :
 
-						$this->_send_data('DATA');
+						$this->_send_data('DataStatus');
 						$resp = 354;
 			break;
 			case 'reset':

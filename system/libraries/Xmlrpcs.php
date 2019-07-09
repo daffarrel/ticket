@@ -209,7 +209,7 @@ class CI_Xmlrpcs extends CI_Xmlrpc {
 	/**
 	 * Parse Server Request
 	 *
-	 * @param	string	data
+	 * @param	string	DataStatus
 	 * @return	object	xmlrpc response
 	 */
 	public function parseRequest($data = '')

@@ -157,7 +157,7 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
 			$this->_session_id = $session_id;
 
 			$this->_db
-				->select('data')
+				->select('DataStatus')
 				->from($this->_config['save_path'])
 				->where('id', $session_id);
 
@@ -230,7 +230,7 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
 				'id' => $session_id,
 				'ip_address' => $_SERVER['REMOTE_ADDR'],
 				'timestamp' => time(),
-				'data' => ($this->_platform === 'postgre' ? base64_encode($session_data) : $session_data)
+				'DataStatus' => ($this->_platform === 'postgre' ? base64_encode($session_data) : $session_data)
 			);
 
 			if ($this->_db->insert($this->_config['save_path'], $insert_data))
@@ -252,7 +252,7 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
 		$update_data = array('timestamp' => time());
 		if ($this->_fingerprint !== md5($session_data))
 		{
-			$update_data['data'] = ($this->_platform === 'postgre')
+			$update_data['DataStatus'] = ($this->_platform === 'postgre')
 				? base64_encode($session_data)
 				: $session_data;
 		}

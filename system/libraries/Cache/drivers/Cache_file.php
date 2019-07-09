@@ -79,7 +79,7 @@ class CI_Cache_file extends CI_Driver {
 	public function get($id)
 	{
 		$data = $this->_get($id);
-		return is_array($data) ? $data['data'] : FALSE;
+		return is_array($data) ? $data['DataStatus'] : FALSE;
 	}
 
 	// ------------------------------------------------------------------------
@@ -98,7 +98,7 @@ class CI_Cache_file extends CI_Driver {
 		$contents = array(
 			'time'		=> time(),
 			'ttl'		=> $ttl,
-			'data'		=> $data
+			'DataStatus' => $data
 		);
 
 		if (write_file($this->_cache_path.$id, serialize($contents)))
@@ -138,14 +138,14 @@ class CI_Cache_file extends CI_Driver {
 
 		if ($data === FALSE)
 		{
-			$data = array('data' => 0, 'ttl' => 60);
+			$data = array('DataStatus' => 0, 'ttl' => 60);
 		}
-		elseif ( ! is_int($data['data']))
+		elseif ( ! is_int($data['DataStatus']))
 		{
 			return FALSE;
 		}
 
-		$new_value = $data['data'] + $offset;
+		$new_value = $data['DataStatus'] + $offset;
 		return $this->save($id, $new_value, $data['ttl'])
 			? $new_value
 			: FALSE;
@@ -166,14 +166,14 @@ class CI_Cache_file extends CI_Driver {
 
 		if ($data === FALSE)
 		{
-			$data = array('data' => 0, 'ttl' => 60);
+			$data = array('DataStatus' => 0, 'ttl' => 60);
 		}
-		elseif ( ! is_int($data['data']))
+		elseif ( ! is_int($data['DataStatus']))
 		{
 			return FALSE;
 		}
 
-		$new_value = $data['data'] - $offset;
+		$new_value = $data['DataStatus'] - $offset;
 		return $this->save($id, $new_value, $data['ttl'])
 			? $new_value
 			: FALSE;
